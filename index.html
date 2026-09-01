@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discord Pix Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">⚡ Discord Pix Store</div>
+  <a href="#admin">Admin</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <span class="badge">ENTREGA AUTOMÁTICA</span>
+      <h1>Venda produtos digitais pelo Discord.</h1>
+      <p>Pix, estoque, cupons e entrega automática em um único painel.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Produtos</h2>
+    <div id="products" class="grid"></div>
+  </section>
+
+  <section id="checkout" class="panel hidden">
+    <h2>Finalizar compra</h2>
+    <div id="selected"></div>
+    <label>Seu usuário/ID do Discord
+      <input id="discordUser" placeholder="ex.: 123456789012345678">
+    </label>
+    <label>Cupom
+      <div class="row">
+        <input id="coupon" placeholder="BEMVINDO10">
+        <button class="secondary" onclick="checkCoupon()">Aplicar</button>
+      </div>
+    </label>
+    <div id="couponMsg"></div>
+    <button onclick="createOrder()">Gerar pagamento Pix</button>
+    <div id="payment" class="payment"></div>
+  </section>
+
+  <section id="admin" class="panel">
+    <h2>Painel administrativo</h2>
+    <p class="muted">Use a chave definida no <code>.env</code>.</p>
+    <input id="adminKey" placeholder="Chave do admin">
+    <div class="admin-grid">
+      <form onsubmit="addProduct(event)">
+        <h3>Adicionar produto</h3>
+        <input id="pName" placeholder="Nome" required>
+        <input id="pDesc" placeholder="Descrição">
+        <input id="pPrice" type="number" step="0.01" placeholder="Preço" required>
+        <input id="pStock" type="number" min="0" placeholder="Estoque" required>
+        <textarea id="pDelivery" placeholder="Conteúdo entregue após o Pix" required></textarea>
+        <button>Adicionar produto</button>
+      </form>
+      <form onsubmit="addCoupon(event)">
+        <h3>Criar desconto</h3>
+        <input id="cCode" placeholder="Código" required>
+        <select id="cType"><option value="percent">Percentual (%)</option><option value="fixed">Valor fixo (R$)</option></select>
+        <input id="cValue" type="number" step="0.01" placeholder="Desconto" required>
+        <button>Criar cupom</button>
+      </form>
+    </div>
+    <button class="secondary" onclick="loadAdmin()">Atualizar produtos/pedidos</button>
+    <pre id="adminOutput"></pre>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
