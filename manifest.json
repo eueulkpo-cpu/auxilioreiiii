@@ -1,0 +1,22 @@
+{
+  "name": "AUXILIO",
+  "short_name": "AUXILIO",
+  "description": "Configurações de mira e precisão",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+   ela },
+    {
+      "src": "icon-512.png",
+      inicial "sizes": "512x512",
+      ""type": "image/png"
+    }
+  ]
+}
